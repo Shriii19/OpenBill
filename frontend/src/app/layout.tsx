@@ -15,9 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "OpenBill - Powerful Billing & Hosting Platform",
-  description:
-    "From shared hosting to dedicated servers, manage your entire web infrastructure with one platform. Automated billing, domain management, and 24/7 support.",
+  title: "OpenBill - Billing & Hosting Platform",
+  description: "Billing and hosting management platform",
 };
 
 export default function RootLayout({
@@ -26,11 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable}`}
-    >
-      <body className="min-h-screen flex flex-col bg-white text-secondary-900 antialiased">
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className="min-h-screen flex flex-col bg-gray-50 text-gray-900 antialiased">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
