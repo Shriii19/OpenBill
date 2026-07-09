@@ -24,13 +24,25 @@ async function request<T>(
     headers,
   });
 
-  const data = await res.json();
-
-  if (!res.ok) {
-    throw new Error(data.message || "Request failed");
+  let data: unknown = null;
+  const text = await res.text();
+  if (text) {
+    try {
+      data = JSON.parse(text);
+    } catch {
+      // non-JSON response body; fall through to status-based error
+    }
   }
 
-  return data;
+  if (!res.ok) {
+    const message =
+      data && typeof data === "object" && "message" in data
+        ? String((data as { message: unknown }).message)
+        : `Request failed (${res.status})`;
+    throw new Error(message);
+  }
+
+  return data as T;
 }
 
 function getToken(): string | null {
