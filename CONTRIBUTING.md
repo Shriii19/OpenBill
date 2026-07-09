@@ -315,15 +315,6 @@ All contributions go through code review. Reviewers will check for:
 - Performance implications
 - Security considerations
 
-## Questions?
-
-If you have questions:
-
-- Check existing documentation
-- Search closed issues
-- Open a new issue with the "question" label
-- Reach out to maintainers
-
 ## License
 
 By contributing, you agree that your contributions will be licensed under the same license as the project.
