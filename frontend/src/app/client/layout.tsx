@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const sidebarLinks = [
   {
@@ -44,50 +47,59 @@ export default function ClientLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+
   return (
-    <div className="flex min-h-[calc(100vh-4rem)] bg-secondary-50">
-      <aside className="hidden w-64 flex-shrink-0 border-r border-secondary-200 bg-white lg:block">
-        <div className="flex h-16 items-center gap-2 border-b border-secondary-200 px-6">
-          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary-600 text-xs font-bold text-white">
+    <div className="flex min-h-screen bg-secondary-50">
+      <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col border-r border-secondary-200 bg-white lg:flex">
+        <div className="flex h-16 shrink-0 items-center gap-2 border-b border-secondary-200 px-6">
+          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-linear-to-br from-primary-500 to-primary-700 text-xs font-bold text-white">
             O
           </div>
           <span className="text-sm font-semibold text-secondary-900">
             OpenBill
           </span>
         </div>
-        <nav className="p-4">
+        <nav className="flex-1 overflow-y-auto p-4">
           <div className="space-y-1">
-            {sidebarLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-secondary-600 transition-colors hover:bg-secondary-100 hover:text-secondary-900"
-              >
-                {link.icon}
-                {link.name}
-              </Link>
-            ))}
+            {sidebarLinks.map((link) => {
+              const active = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                    active
+                      ? "bg-primary-50 text-primary-700"
+                      : "text-secondary-600 hover:bg-secondary-100 hover:text-secondary-900"
+                  }`}
+                >
+                  {link.icon}
+                  {link.name}
+                </Link>
+              );
+            })}
           </div>
 
           <div className="mt-8 border-t border-secondary-200 pt-4">
             <Link
               href="/"
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-secondary-500 transition-colors hover:text-secondary-700"
+              className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-secondary-500 transition-colors hover:bg-secondary-100 hover:text-secondary-700"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5h3m-6.75 2.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25h-10.5a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25zm-3-9.75h10.5a2.25 2.25 0 012.25 2.25v6.75a2.25 2.25 0 01-2.25 2.25h-10.5a2.25 2.25 0 01-2.25-2.25v-6.75a2.25 2.25 0 012.25-2.25z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 21.75H7.5A2.25 2.25 0 015.25 19.5v-9.16a2.25 2.25 0 01.836-1.75l6-4.8a2.25 2.25 0 012.828 0l6 4.8c.53.424.836 1.066.836 1.75v9.16a2.25 2.25 0 01-2.25 2.25h-2.25m-7.5 0v-5.25a1.5 1.5 0 011.5-1.5h4.5a1.5 1.5 0 011.5 1.5v5.25m-7.5 0h7.5" />
               </svg>
               Back to Website
             </Link>
           </div>
         </nav>
 
-        <div className="absolute bottom-0 left-0 w-64 border-t border-secondary-200 p-4">
+        <div className="shrink-0 border-t border-secondary-200 p-4">
           <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-secondary-200 text-sm font-medium text-secondary-700">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-100 text-sm font-medium text-primary-700">
               JD
             </div>
-            <div className="flex-1 min-w-0">
+            <div className="min-w-0 flex-1">
               <p className="truncate text-sm font-medium text-secondary-900">
                 John Doe
               </p>
@@ -99,10 +111,10 @@ export default function ClientLayout({
         </div>
       </aside>
 
-      <div className="flex-1">
-        <header className="flex h-16 items-center justify-between border-b border-secondary-200 bg-white px-6">
+      <div className="min-w-0 flex-1">
+        <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-secondary-200 bg-white/90 px-6 backdrop-blur">
           <div className="flex items-center gap-2 lg:hidden">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary-600 text-xs font-bold text-white">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-linear-to-br from-primary-500 to-primary-700 text-xs font-bold text-white">
               O
             </div>
             <span className="text-sm font-semibold text-secondary-900">
@@ -110,18 +122,42 @@ export default function ClientLayout({
             </span>
           </div>
 
+          <nav className="hidden items-center gap-1 lg:flex">
+            <span className="text-sm text-secondary-500">Client Area</span>
+          </nav>
+
           <div className="flex items-center gap-4">
             <Link
-              href="#"
-              className="rounded-lg bg-primary-600 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-primary-700"
+              href="/client/tickets"
+              className="rounded-lg bg-primary-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm transition-colors hover:bg-primary-700"
             >
               + New Ticket
             </Link>
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-secondary-200 text-sm font-medium text-secondary-700 lg:hidden">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-100 text-sm font-medium text-primary-700 lg:hidden">
               JD
             </div>
           </div>
         </header>
+
+        {/* Mobile portal nav (sidebar is hidden below lg) */}
+        <nav className="flex gap-1 overflow-x-auto border-b border-secondary-200 bg-white px-4 py-2 lg:hidden">
+          {sidebarLinks.map((link) => {
+            const active = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
+                  active
+                    ? "bg-primary-50 text-primary-700"
+                    : "text-secondary-600 hover:bg-secondary-100"
+                }`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
+        </nav>
 
         <div className="p-6">{children}</div>
       </div>

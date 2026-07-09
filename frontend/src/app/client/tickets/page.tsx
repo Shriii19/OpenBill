@@ -22,8 +22,8 @@ export default function TicketsPage() {
         </button>
       </div>
 
-      <div className="mt-6 overflow-hidden rounded-xl border border-secondary-200 bg-white">
-        <table className="w-full text-sm">
+      <div className="mt-6 overflow-x-auto rounded-xl border border-secondary-200 bg-white shadow-sm">
+        <table className="w-full min-w-180 text-sm">
           <thead>
             <tr className="border-b border-secondary-200 bg-secondary-50 text-left">
               <th className="px-5 py-3 font-medium text-secondary-600">Ticket</th>

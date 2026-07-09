@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const services = [
   { name: "Business Hosting", status: "Active", price: "$24.99/mo", nextDue: "Jul 15, 2026" },
   { name: "example.com", status: "Active", price: "$11.99/yr", nextDue: "Aug 22, 2026" },
@@ -56,12 +58,12 @@ export default function DashboardPage() {
             <h2 className="text-sm font-semibold text-secondary-900">
               Your Services
             </h2>
-            <a
+            <Link
               href="/client/services"
               className="text-xs font-medium text-primary-600 hover:text-primary-500"
             >
               View all &rarr;
-            </a>
+            </Link>
           </div>
           <div className="divide-y divide-secondary-100">
             {services.map((service) => (
@@ -95,12 +97,12 @@ export default function DashboardPage() {
             <h2 className="text-sm font-semibold text-secondary-900">
               Recent Invoices
             </h2>
-            <a
+            <Link
               href="/client/invoices"
               className="text-xs font-medium text-primary-600 hover:text-primary-500"
             >
               View all &rarr;
-            </a>
+            </Link>
           </div>
           <div className="divide-y divide-secondary-100">
             {recentInvoices.map((inv) => (
@@ -139,12 +141,12 @@ export default function DashboardPage() {
           <h2 className="text-sm font-semibold text-secondary-900">
             Open Support Tickets
           </h2>
-          <a
+          <Link
             href="/client/tickets"
             className="text-xs font-medium text-primary-600 hover:text-primary-500"
           >
             View all &rarr;
-          </a>
+          </Link>
         </div>
         <div className="divide-y divide-secondary-100">
           {openTickets.map((ticket) => (
