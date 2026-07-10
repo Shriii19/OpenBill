@@ -9,11 +9,13 @@ Built with Next.js 16, TailwindCSS 4, Express.js, TypeScript, and Supabase.
 ```
 Openbill/
 ├── frontend/          Next.js + Tailwind (client-facing website & portal)
-│   ├── src/app/       Pages: /, /pricing, /domains, /login, /register, /contact, /client/*
+│   ├── src/app/       Pages: /, /store, /cart, /announcements, /status,
+│   │                  /login, /register, /contact, /client/*
 │   ├── src/components/Shared UI components
 │   └── src/lib/       API client & service layer
 │
 ├── backend/           Express.js + TypeScript REST API
+│   ├── src/config/    Environment variables & Supabase client
 │   ├── src/auth/      Authentication (register, login, JWT)
 │   ├── src/users/     User management
 │   ├── src/clients/   Client management
@@ -46,7 +48,8 @@ Openbill/
 ```bash
 cd backend
 npm install
-npm run setup          # creates .env from template
+npm run setup          # creates .env from template (Windows)
+# on macOS/Linux: cp .env.example .env
 ```
 
 Edit `backend/.env` with your Supabase credentials and a strong JWT secret:
@@ -61,6 +64,8 @@ JWT_SECRET=generate-a-random-string-here
 ```bash
 npm run dev            # starts on http://localhost:4000
 ```
+
+Verify it's running: [http://localhost:4000/api/health](http://localhost:4000/api/health)
 
 ### 3. Frontend
 
@@ -94,6 +99,10 @@ The frontend reads `NEXT_PUBLIC_API_URL` from `.env.local` (defaults to `http://
 | Database  | Supabase (PostgreSQL)                |
 | Auth      | JWT (jsonwebtoken) + bcryptjs        |
 | Payments  | Extensible (Stripe, PayPal, crypto)  |
+
+## Contributing
+
+Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for the development workflow, coding standards, and pull request process.
 
 ## License
 
