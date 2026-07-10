@@ -25,7 +25,7 @@ Before you begin contributing, please:
 
 ### Prerequisites
 
-- Node.js (v18 or higher)
+- Node.js (v20 or higher)
 - npm or yarn
 - Supabase account (for database)
 - Git
@@ -55,20 +55,18 @@ Before you begin contributing, please:
    
    Create `.env` files in both backend and frontend directories:
    
-   **Backend (.env)**
+   **Backend (.env)** — copy `backend/.env.example` (`npm run setup` on Windows, or `cp .env.example .env`) and fill in:
    ```
    SUPABASE_URL=your_supabase_url
    SUPABASE_ANON_KEY=your_supabase_anon_key
    SUPABASE_SERVICE_KEY=your_supabase_service_key
-   PORT=3001
+   PORT=4000
    JWT_SECRET=your_jwt_secret
    ```
    
-   **Frontend (.env.local)**
+   **Frontend (.env.local)** — optional; only needed if the API is not on the default URL:
    ```
-   NEXT_PUBLIC_API_URL=http://localhost:3001
-   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   NEXT_PUBLIC_API_URL=http://localhost:4000/api
    ```
 
 5. **Set up Database**
@@ -94,7 +92,7 @@ Before you begin contributing, please:
 
 7. **Access the Application**
    - Frontend: http://localhost:3000
-   - Backend API: http://localhost:3001
+   - Backend API: http://localhost:4000 (health check: http://localhost:4000/api/health)
 
 ## Project Structure
 
