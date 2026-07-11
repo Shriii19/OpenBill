@@ -4,6 +4,18 @@ A self-hosted billing and hosting management platform. Manage customers, product
 
 Built with Next.js 16, TailwindCSS 4, Express.js, TypeScript, and Supabase.
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#license)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Node](https://img.shields.io/badge/Node.js-20%2B-339933?logo=node.js&logoColor=white)](https://nodejs.org)
+
+## New here?
+
+If you're checking out OpenBill for the first time:
+
+1. Read [Project Structure](#project-structure) below to see how the codebase is organized.
+2. Follow [Quick Start](#quick-start) to get the app running locally in a few minutes.
+3. Want to contribute? Jump to [Contributing](#contributing) — we welcome first-time open-source contributors, and there's a full setup + workflow guide in [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## Project Structure
 
 ```
@@ -102,7 +114,17 @@ The frontend reads `NEXT_PUBLIC_API_URL` from `.env.local` (defaults to `http://
 
 ## Contributing
 
-Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for the development workflow, coding standards, and pull request process.
+Contributions of all kinds are welcome — bug fixes, new features, documentation, tests, or UI polish. No contribution is too small.
+
+Quick path to your first PR:
+
+1. **Fork** this repo and clone your fork.
+2. Follow [Quick Start](#quick-start) above to get both the backend and frontend running locally.
+3. Check the [Issues](../../issues) tab for open tasks, or open a new issue to discuss what you'd like to work on. Look for issues labeled `good first issue` if this is your first contribution.
+4. Create a branch (`git checkout -b feature/your-feature-name`), make your changes, and commit using [Conventional Commits](https://www.conventionalcommits.org/) (e.g. `fix(auth): resolve token expiration issue`).
+5. Push your branch and open a Pull Request against `main`.
+
+For full details on coding standards, commit conventions, and the PR review process, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
