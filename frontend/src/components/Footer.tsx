@@ -79,8 +79,8 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} OpenBill. All rights reserved.
           </span>
           <div className="flex items-center gap-4 text-xs text-secondary-500">
-            <Link href="#" className="transition-colors hover:text-secondary-700">Terms of Service</Link>
-            <Link href="#" className="transition-colors hover:text-secondary-700">Privacy Policy</Link>
+            <Link href="/terms" className="transition-colors hover:text-secondary-700">Terms of Service</Link>
+            <Link href="/privacy" className="transition-colors hover:text-secondary-700">Privacy Policy</Link>
           </div>
         </div>
       </div>
