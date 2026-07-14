@@ -65,6 +65,7 @@ export default function Header() {
             className="rounded-lg p-2 text-secondary-600 transition-colors hover:bg-secondary-50 hover:text-secondary-900 md:hidden"
             aria-label="Toggle menu"
             aria-expanded={mobileOpen}
+            aria-controls="mobile-nav"
           >
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d={mobileOpen ? "M6 18L18 6M6 6l12 12" : "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"} />
@@ -74,7 +75,7 @@ export default function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-secondary-200 bg-white md:hidden">
+        <div id="mobile-nav" className="border-t border-secondary-200 bg-white md:hidden">
           <div className="space-y-1 px-4 py-3">
             {navLinks.map((link) => (
               <Link
