@@ -6,7 +6,7 @@
     "dev": "tsx watch src/main.ts",
     "build": "tsc",
     "start": "node dist/main.js",
-    "setup": "copy /-y .env.example .env >nul 2>&1 & echo Copied .env.example to .env & echo Please edit .env with your Supabase credentials.",
+    "setup": "copy /y .env.example .env >nul 2>&1 & echo Copied .env.example to .env & echo Please edit .env with your Supabase credentials.",
     "lint": "eslint src/"
   },
   "dependencies": {
