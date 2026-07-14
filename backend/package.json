@@ -18,12 +18,16 @@
     "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/bcryptjs": "^2.4.6",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^22.13.17",
+    "eslint": "^10.7.0",
+    "globals": "^17.7.0",
     "tsx": "^4.19.3",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.64.0"
   }
 }
